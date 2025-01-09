@@ -40,9 +40,8 @@ body {
 }
 
 .header-img {
-  background: blue;
-  height: 72;
-  width: 72;
+  height: 64;
+  width: 64;
 }
 
 .header-title {
