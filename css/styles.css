@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Noto Serif';
   src: url('../fonts/NotoSerif.woff2') format('woff2');
@@ -61,8 +60,8 @@ body {
 h1 {
   font-family: 'Bricolage Grotesque', serif;
   font-weight: 800;
-	line-height: 1em;
-	text-shadow: 0px 1px 0px rgba(0,0,0,0.63);
+  line-height: 1em;
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.63);
   position: relative;
   color: #101010;
   font-size: 1.75em;
@@ -74,15 +73,22 @@ h1 {
   margin: 0 auto;
 }
 
+.row {
+    display: grid;
+    grid-gap: 20px;
+}
+
 .item {
   position: relative;
   border: 1px solid #000;
-  margin-bottom: 20px;
   padding: 30px;
   color: #000;
   overflow: hidden;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
   transition: transform 0.9s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
 }
 
 .item:hover {
@@ -131,70 +137,25 @@ h1 {
 }
 
 @media (min-width: 992px) {
-  item p {
-    margin-top: 30px;
-  }
-
-  .item {
-    float: left;
-    width: calc(33.33% - 20px);
-    margin: auto 10px;
-    min-height: 300px;
-    height: 45vh;
-  }
-
-  .item:first-child {
-    margin-left: 4px;
-  }
-
-  .item:last-child {
-    margin-right: 10px;
-  }
+    .row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .item {
-    float: left;
-    margin-left: 10px;
-    margin-right: 10px;
-    height: 30vh;
-  }
+    .row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
-  .item:nth-child(1),
-  .item:nth-child(2) {
-    float: left;
-    width: calc(50% - 20px);
-    height: 44vh;
-    margin-right: 20px;
-    margin-bottom: 20px;
-  }
-
-  .item:nth-child(3) {
-    width: calc(100% - 10px);
-    margin-left: 0px;
-    margin-right: 10px;
-  }
-
-  .item:first-child {
-    margin-left: 0;
-  }
-
-  .item:nth-child(2) {
-    margin-right: 0;
-  }
+    .item:nth-child(3) {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 767px) {
-  .item {
-    width: 100%;
-    float: none;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .item:not(:last-child) {
-    margin-bottom: 20px;
-  }
+    .row {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.1),
@@ -202,7 +163,7 @@ h1 {
   (-o-min-device-pixel-ratio: 10/9),
   (min-resolution: 1.1dppx),
   (min-width: 1500px) {
-  .item {
-    height: auto;
-  }
+    .item {
+      min-height: 200px;
+    }
 }
